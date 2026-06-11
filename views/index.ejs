@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>URL Safety Checker</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <div class="container">
+        <header class="hero">
+            <p class="eyebrow">Safety Signals</p>
+            <h1>URL Safety Checker</h1>
+            <p class="subtitle">Check links with Google Safe Browsing and VirusTotal in one pass.</p>
+        </header>
+
+        <form action="/check-url" method="POST" class="forms">
+            <label class="field">
+                <span>URL to scan</span>
+                <input type="url" name="url" placeholder="https://example.com" required>
+            </label>
+            <button type="submit" class="primary">Check URL</button>
+        </form>
+
+        <div class="response-area">
+            <% if (locals.url) { %>
+                <h2 class="results-title">Results for: <%= url %></h2>
+
+                <div class="result-section result-section--<%= googleVerdict.status %>">
+                    <div class="result-header">
+                        <h3>Google Safe Browsing</h3>
+                        <span class="badge badge--<%= googleVerdict.status %>">
+                            <%= googleVerdict.status.toUpperCase() %>
+                        </span>
+                    </div>
+                    <p class="result-message"><%= googleVerdict.message %></p>
+                    <% if (googleVerdict.advisoryUrl) { %>
+                        <p class="advisory">
+                            <a href="<%= googleVerdict.advisoryUrl %>" target="_blank" rel="noopener noreferrer">
+                                Advisory provided by Google
+                            </a>
+                        </p>
+                    <% } %>
+                </div>
+
+                <div class="result-section result-section--<%= virusTotalVerdict.status %>">
+                    <div class="result-header">
+                        <h3>VirusTotal</h3>
+                        <span class="badge badge--<%= virusTotalVerdict.status %>">
+                            <%= virusTotalVerdict.status.toUpperCase() %>
+                        </span>
+                    </div>
+                    <p class="result-message"><%= virusTotalVerdict.message %></p>
+                    <% if (virusTotalVerdict.stats) { %>
+                        <div class="stats-grid">
+                            <div class="stat">
+                                <span>Malicious</span>
+                                <strong><%= virusTotalVerdict.stats.malicious || 0 %></strong>
+                            </div>
+                            <div class="stat">
+                                <span>Suspicious</span>
+                                <strong><%= virusTotalVerdict.stats.suspicious || 0 %></strong>
+                            </div>
+                            <div class="stat">
+                                <span>Harmless</span>
+                                <strong><%= virusTotalVerdict.stats.harmless || 0 %></strong>
+                            </div>
+                            <div class="stat">
+                                <span>Undetected</span>
+                                <strong><%= virusTotalVerdict.stats.undetected || 0 %></strong>
+                            </div>
+                        </div>
+                    <% } %>
+                </div>
+            <% } %>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,228 @@
+@import url("https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Space+Grotesk:wght@400;600;700&display=swap");
+
+:root {
+    --bg-1: #f5efe6;
+    --bg-2: #f9f5ee;
+    --ink: #1f1c17;
+    --muted: #625f5a;
+    --card: #ffffff;
+    --accent: #c2410c;
+    --ok: #0f766e;
+    --warn: #b45309;
+    --error: #b91c1c;
+    --shadow: 0 28px 70px rgba(24, 24, 24, 0.15);
+    --radius: 22px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: "Space Grotesk", "Noto Sans", sans-serif;
+    color: var(--ink);
+    background: radial-gradient(circle at top left, #fff7e3 0%, #f7efe0 35%, #f2e6d3 60%, #efe0c6 100%);
+}
+
+.container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 48px 24px 80px;
+}
+
+.hero {
+    text-align: left;
+    margin-bottom: 32px;
+}
+
+.eyebrow {
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    font-size: 0.75rem;
+    color: var(--muted);
+    margin: 0 0 12px;
+}
+
+h1 {
+    font-family: "Fraunces", serif;
+    font-size: clamp(2.4rem, 4vw, 3.4rem);
+    margin: 0 0 12px;
+}
+
+.subtitle {
+    font-size: 1.05rem;
+    color: var(--muted);
+    margin: 0;
+    max-width: 520px;
+}
+
+.forms {
+    display: grid;
+    gap: 16px;
+    background: var(--card);
+    border-radius: var(--radius);
+    padding: 24px;
+    box-shadow: var(--shadow);
+}
+
+.field {
+    display: grid;
+    gap: 8px;
+    font-weight: 600;
+}
+
+.field span {
+    font-size: 0.9rem;
+    color: var(--muted);
+}
+
+.field input {
+    border-radius: 14px;
+    border: 1px solid #e7dbc7;
+    padding: 14px 16px;
+    font-size: 1rem;
+    background: #fffaf2;
+}
+
+.field input:focus {
+    outline: 2px solid #f2b270;
+    border-color: transparent;
+}
+
+.primary {
+    border: none;
+    border-radius: 14px;
+    padding: 14px 18px;
+    font-weight: 700;
+    font-size: 1rem;
+    color: #fff;
+    background: linear-gradient(135deg, #f97316 0%, #ea580c 55%, #c2410c 100%);
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 18px 35px rgba(194, 65, 12, 0.25);
+}
+
+.response-area {
+    margin-top: 32px;
+    display: grid;
+    gap: 20px;
+}
+
+.results-title {
+    font-size: 1.3rem;
+    margin: 0 0 12px;
+}
+
+.result-section {
+    background: var(--card);
+    border-radius: 20px;
+    padding: 20px 24px;
+    border: 1px solid #f0e2ce;
+    box-shadow: 0 16px 40px rgba(37, 30, 20, 0.08);
+}
+
+.result-section--ok {
+    border-color: rgba(15, 118, 110, 0.4);
+}
+
+.result-section--warn {
+    border-color: rgba(180, 83, 9, 0.5);
+}
+
+.result-section--error {
+    border-color: rgba(185, 28, 28, 0.45);
+}
+
+.result-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.result-header h3 {
+    margin: 0;
+    font-size: 1.15rem;
+}
+
+.badge {
+    padding: 6px 12px;
+    border-radius: 999px;
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+.badge--ok {
+    background: rgba(15, 118, 110, 0.15);
+    color: var(--ok);
+}
+
+.badge--warn {
+    background: rgba(180, 83, 9, 0.18);
+    color: var(--warn);
+}
+
+.badge--error {
+    background: rgba(185, 28, 28, 0.18);
+    color: var(--error);
+}
+
+.result-message {
+    margin: 12px 0 0;
+    color: var(--muted);
+}
+
+.advisory {
+    margin: 12px 0 0;
+}
+
+.advisory a {
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.advisory a:hover {
+    text-decoration: underline;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 12px;
+    margin-top: 16px;
+}
+
+.stat {
+    background: #fff6e9;
+    border-radius: 12px;
+    padding: 10px 12px;
+    display: grid;
+    gap: 6px;
+    font-size: 0.9rem;
+    color: var(--muted);
+}
+
+.stat strong {
+    font-size: 1.2rem;
+    color: var(--ink);
+}
+
+@media (max-width: 720px) {
+    .container {
+        padding: 36px 18px 60px;
+    }
+
+    .result-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
