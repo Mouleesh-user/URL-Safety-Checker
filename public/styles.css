@@ -9,6 +9,7 @@
     --accent: #c2410c;
     --ok: #0f766e;
     --warn: #b45309;
+    --pending: #1d4ed8;
     --error: #b91c1c;
     --shadow: 0 28px 70px rgba(24, 24, 24, 0.15);
     --radius: 22px;
@@ -108,10 +109,45 @@ h1 {
     box-shadow: 0 18px 35px rgba(194, 65, 12, 0.25);
 }
 
+.form-error {
+    margin: -4px 0 0;
+    color: var(--error);
+    font-weight: 700;
+}
+
 .response-area {
     margin-top: 32px;
     display: grid;
     gap: 20px;
+}
+
+.overall {
+    background: var(--card);
+    border-radius: 20px;
+    padding: 22px 24px;
+    border: 2px solid #f0e2ce;
+    box-shadow: 0 16px 40px rgba(37, 30, 20, 0.1);
+}
+
+.overall h2 {
+    margin: 0;
+    font-size: 1.25rem;
+}
+
+.overall--ok {
+    border-color: rgba(15, 118, 110, 0.5);
+}
+
+.overall--warn {
+    border-color: rgba(180, 83, 9, 0.6);
+}
+
+.overall--pending {
+    border-color: rgba(29, 78, 216, 0.45);
+}
+
+.overall--error {
+    border-color: rgba(185, 28, 28, 0.55);
 }
 
 .results-title {
@@ -133,6 +169,10 @@ h1 {
 
 .result-section--warn {
     border-color: rgba(180, 83, 9, 0.5);
+}
+
+.result-section--pending {
+    border-color: rgba(29, 78, 216, 0.4);
 }
 
 .result-section--error {
@@ -168,6 +208,11 @@ h1 {
 .badge--warn {
     background: rgba(180, 83, 9, 0.18);
     color: var(--warn);
+}
+
+.badge--pending {
+    background: rgba(29, 78, 216, 0.14);
+    color: var(--pending);
 }
 
 .badge--error {

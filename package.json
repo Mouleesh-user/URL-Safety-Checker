@@ -1,6 +1,6 @@
 {
   "type": "module",
-  "name": "5.4-api-authentication",
+  "name": "url-safety-checker",
   "version": "1.0.0",
   "description": "A URL safety checker powered by Google Safe Browsing and VirusTotal.",
   "engines": {

@@ -17,13 +17,28 @@
         <form action="/check-url" method="POST" class="forms">
             <label class="field">
                 <span>URL to scan</span>
-                <input type="url" name="url" placeholder="https://example.com" required>
+                <input type="url" name="url" placeholder="https://example.com" value="<%= locals.url || '' %>" required>
             </label>
+            <% if (locals.formError) { %>
+                <p class="form-error"><%= formError %></p>
+            <% } %>
             <button type="submit" class="primary">Check URL</button>
         </form>
 
         <div class="response-area">
-            <% if (locals.url) { %>
+            <% if (locals.overallVerdict) { %>
+                <section class="overall overall--<%= overallVerdict.status %>">
+                    <div class="result-header">
+                        <h2>Overall verdict</h2>
+                        <span class="badge badge--<%= overallVerdict.status %>">
+                            <%= overallVerdict.status.toUpperCase() %>
+                        </span>
+                    </div>
+                    <p class="result-message"><%= overallVerdict.message %></p>
+                </section>
+            <% } %>
+
+            <% if (locals.url && locals.googleVerdict && locals.virusTotalVerdict) { %>
                 <h2 class="results-title">Results for: <%= url %></h2>
 
                 <div class="result-section result-section--<%= googleVerdict.status %>">
